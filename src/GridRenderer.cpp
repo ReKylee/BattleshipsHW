@@ -6,11 +6,10 @@
 #include "ftxui/component/component.hpp"
 using namespace BattleshipsHW;
 
-GridRenderer::GridRenderer(Player *p, int *selected_x, int *selected_y) : player(p) {
-
+GridRenderer::GridRenderer(Player *p, int *selected_x, int *selected_y, std::function<void()> on_click_func) :
+	on_click(on_click_func), player(p) {
 
 	gridComponent = Container::Vertical({}, selected_y);
-
 	for (int j = 0; j < Grid::GRID_SIZE; ++j) {
 		Component buttons_in_row = Container::Horizontal({}, selected_x);
 
@@ -26,7 +25,7 @@ GridRenderer::GridRenderer(Player *p, int *selected_x, int *selected_y) : player
 				   return element;
 			};
 
-			buttons_in_row->Add(Button("", on_click, std::move(option)));
+			buttons_in_row->Add(Button(std::move(option)));
 		}
 		gridComponent->Add(std::move(buttons_in_row));
 	}

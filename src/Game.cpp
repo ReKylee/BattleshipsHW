@@ -1,4 +1,5 @@
 #include <Game.h>
+#include <GridRenderer.h>
 #include <cstdlib>
 #include <ftxui/component/component.hpp>
 #include <ftxui/component/component_base.hpp>
@@ -28,70 +29,17 @@ void Game::MainGameScreen() const {
 
 	int selected_y = 0, selected_x = 0;
 
-	const auto on_click = [&] { player1->makeMove(player2, selected_x, selected_y); };
+	auto on_click = [&] { player1->makeMove(player2, selected_x, selected_y); };
 
+	GridRenderer p1GridRenderer(player1, &selected_x, &selected_y, on_click);
+	GridRenderer p2GridRenderer(player2, &selected_x, &selected_y, on_click);
 
-	const Component grid = Container::Vertical({}, &selected_y);
+	p1GridRenderer.on_click = on_click;
+	p2GridRenderer.on_click = on_click;
 
-	for (int j = 0; j < Grid::GRID_SIZE; ++j) {
-		Component buttons_in_row = Container::Horizontal({}, &selected_x);
+	const auto layout = Container::Horizontal({p1GridRenderer.gridRenderer, p2GridRenderer.gridRenderer});
 
-		for (int i = 0; i < Grid::GRID_SIZE; ++i) {
-
-			ButtonOption option = ButtonOption::Ascii();
-			option.on_click		= on_click;
-			option.transform	= [this, i, j](const EntryState &s) {
-				   const char single_cell[2] = {player1->getCell(i, j), '\0'};
-
-				   auto element = text(single_cell);
-
-				   return element;
-			};
-
-			buttons_in_row->Add(Button("", on_click, std::move(option)));
-		}
-		grid->Add(std::move(buttons_in_row));
-	}
-
-	const auto renderer = Renderer(grid, [&] {
-		// Create a vector to hold the rows of the table
-		std::vector<Elements> elements;
-
-		// Add the header row with column labels
-		Elements header_row;
-		header_row.push_back(text("")); // Empty corner cell for the top-left
-		for (int j = 0; j < Grid::GRID_SIZE; ++j) {
-			const char label[2] = {static_cast<char>('A' + j), '\0'};
-			header_row.push_back(text(label)); // Column labels (A, B, C, ...)
-		}
-		elements.push_back(header_row);
-
-		// Loop through rows to create buttons and add them to the table
-		for (int i = 0; i < Grid::GRID_SIZE; ++i) {
-			Elements row;
-			row.push_back(text(std::to_string(i + 1))); // Row labels (1, 2, 3, ...)
-			const auto button_row = grid->ChildAt(i);
-			// Create a row of buttons for this row
-			for (int j = 0; j < Grid::GRID_SIZE; ++j) {
-
-				// Add the button to the row
-				const auto button = button_row->ChildAt(j);
-				row.push_back(button->Render());
-			}
-
-			// Add the row to the elements vector
-			elements.push_back(row);
-		}
-
-		// Create the table from the elements
-		auto table = Table(elements);
-		table.SelectAll().Border(LIGHT);
-
-		return table.Render();
-	});
-
-
-	screen.Loop(renderer);
+	screen.Loop(layout);
 } // namespace BattleshipsHW
 
 Component Exit(ScreenInteractive &screen, bool &exit_confirmed) {
