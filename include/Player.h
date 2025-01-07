@@ -13,7 +13,6 @@ public:
 	virtual void makeMove(Player *opponent, int row, int col) = 0;
 	bool		 allShipsSunk() const;
 	char		 getCell(int row, int col) const { return grid.getCell(row, col); }
-	int			 selected_x = 0, selected_y = 0;
 
 protected:
 	char *playerName;

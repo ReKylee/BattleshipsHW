@@ -7,6 +7,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/BattleshipsHW.dir/src/Game.cpp.o.d"
   "CMakeFiles/BattleshipsHW.dir/src/Grid.cpp.o"
   "CMakeFiles/BattleshipsHW.dir/src/Grid.cpp.o.d"
+  "CMakeFiles/BattleshipsHW.dir/src/GridRenderer.cpp.o"
+  "CMakeFiles/BattleshipsHW.dir/src/GridRenderer.cpp.o.d"
   "CMakeFiles/BattleshipsHW.dir/src/HumanPlayer.cpp.o"
   "CMakeFiles/BattleshipsHW.dir/src/HumanPlayer.cpp.o.d"
   "CMakeFiles/BattleshipsHW.dir/src/Player.cpp.o"

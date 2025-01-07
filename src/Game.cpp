@@ -25,81 +25,74 @@ bool Game::isGameOver() const { return player1->allShipsSunk() || player2->allSh
 void Game::MainGameScreen() const {
 	auto screen = ScreenInteractive::Fullscreen();
 	using namespace ftxui;
-	int selected_y, selected_x;
 
-	auto GridComponent = [&](const Player *p, const std::function<void()> &on_click) {
-		auto gridComponent = Container::Vertical({}, &selected_y);
-		for (int y = 0; y < Grid::GRID_SIZE; y++) {
-			const auto row = Container::Horizontal({}, &selected_x);
-			for (int x = 0; x < Grid::GRID_SIZE; x++) {
-				const char single_char[2] = {p->getCell(x, y), '\0'};
+	int selected_y = 0, selected_x = 0;
 
-				const auto button = Button(single_char, on_click, ButtonOption::Ascii());
+	const auto on_click = [&] { player1->makeMove(player2, selected_x, selected_y); };
 
-				row->Add(button);
-			}
 
-			gridComponent->Add(row);
+	const Component grid = Container::Vertical({}, &selected_y);
+
+	for (int j = 0; j < Grid::GRID_SIZE; ++j) {
+		Component buttons_in_row = Container::Horizontal({}, &selected_x);
+
+		for (int i = 0; i < Grid::GRID_SIZE; ++i) {
+
+			ButtonOption option = ButtonOption::Ascii();
+			option.on_click		= on_click;
+			option.transform	= [this, i, j](const EntryState &s) {
+				   const char single_cell[2] = {player1->getCell(i, j), '\0'};
+
+				   auto element = text(single_cell);
+
+				   return element;
+			};
+
+			buttons_in_row->Add(Button("", on_click, std::move(option)));
 		}
-		return gridComponent;
-	};
+		grid->Add(std::move(buttons_in_row));
+	}
 
-	// TODO: Theory, combine both GridRenderer and renderer into one renderer.
-	const auto GridRenderer = [&](const Component &grid) {
-		return Renderer(grid, [&] {
-			std::vector<Elements> elements;
-			elements.reserve(Grid::GRID_SIZE + 1);
+	const auto renderer = Renderer(grid, [&] {
+		// Create a vector to hold the rows of the table
+		std::vector<Elements> elements;
 
-			// Add the header row (column letters)
-			Elements header_row;
-			header_row.reserve(Grid::GRID_SIZE + 1);
-			header_row.emplace_back(text("")); // Empty corner cell (top-left)
+		// Add the header row with column labels
+		Elements header_row;
+		header_row.push_back(text("")); // Empty corner cell for the top-left
+		for (int j = 0; j < Grid::GRID_SIZE; ++j) {
+			const char label[2] = {static_cast<char>('A' + j), '\0'};
+			header_row.push_back(text(label)); // Column labels (A, B, C, ...)
+		}
+		elements.push_back(header_row);
 
-			for (int x = 0; x < Grid::GRID_SIZE; x++) {
-				const char single_char[2] = {static_cast<char>('A' + x), '\0'};
-				header_row.emplace_back(text(single_char)); // Letters A, B, C, ...
-			}
-			elements.push_back(header_row);
+		// Loop through rows to create buttons and add them to the table
+		for (int i = 0; i < Grid::GRID_SIZE; ++i) {
+			Elements row;
+			row.push_back(text(std::to_string(i + 1))); // Row labels (1, 2, 3, ...)
+			const auto button_row = grid->ChildAt(i);
+			// Create a row of buttons for this row
+			for (int j = 0; j < Grid::GRID_SIZE; ++j) {
 
-			// Add the rows of buttons for the player's grid
-			for (int y = 0; y < Grid::GRID_SIZE; y++) {
-				Elements render_row;
-				render_row.reserve(Grid::GRID_SIZE + 1);
-
-				// Add the number at the start of each row (1, 2, 3, ...)
-				render_row.emplace_back(text(std::to_string(y + 1)));
-
-				// Create a row container for the player's buttons (initialized once per row)
-				const auto row = grid->ChildAt(y);
-				for (int x = 0; x < Grid::GRID_SIZE; x++) {
-					const auto btn = row->ChildAt(x);
-					render_row.emplace_back(btn->Render());
-				}
-
-				// Add the row to the container and push the rendered row to the elements vector
-				elements.push_back(render_row);
+				// Add the button to the row
+				const auto button = button_row->ChildAt(j);
+				row.push_back(button->Render());
 			}
 
-			// Create a table from the elements
-			auto table = Table(elements);
-			table.SelectAll().Border(LIGHT);
-			table.SelectAll().Separator(EMPTY);
+			// Add the row to the elements vector
+			elements.push_back(row);
+		}
 
-			return table.Render();
-		});
-	};
+		// Create the table from the elements
+		auto table = Table(elements);
+		table.SelectAll().Border(LIGHT);
 
-	const auto p1Grid = GridComponent(player1, [&] { player1->makeMove(player2, selected_x, selected_y); });
-	const auto p2Grid = GridComponent(player2, [&] { player2->makeMove(player1, selected_x, selected_y); });
+		return table.Render();
+	});
 
-	const auto p1Renderer = GridRenderer(p1Grid);
-	const auto p2Renderer = GridRenderer(p2Grid);
-
-	const auto layout	= Container::Horizontal({p1Renderer, p2Renderer});
-	const auto renderer = Renderer(layout, [&] { return hbox({p1Renderer->Render(), p2Renderer->Render()}); });
 
 	screen.Loop(renderer);
-}
+} // namespace BattleshipsHW
 
 Component Exit(ScreenInteractive &screen, bool &exit_confirmed) {
 	auto exit_btn	= Button("Exit", screen.ExitLoopClosure()) | center;

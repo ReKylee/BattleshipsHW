@@ -19,6 +19,12 @@
 },
 {
   "directory": "/mnt/c/Users/ido54/OneDrive - Shenkar College/Documents/College/Year 2 Semester 1/Programming 3/BattleShipsHW/cmake-build-debug-wsl",
+  "command": "/usr/bin/c++  -I\"/mnt/c/Users/ido54/OneDrive - Shenkar College/Documents/College/Year 2 Semester 1/Programming 3/BattleShipsHW/include\" -isystem \"/mnt/c/Users/ido54/OneDrive - Shenkar College/Documents/College/Year 2 Semester 1/Programming 3/BattleShipsHW/cmake-build-debug-wsl/_deps/ftxui-src/include\" -g -std=gnu++20 -fdiagnostics-color=always -pedantic-errors -Wall -o CMakeFiles/BattleshipsHW.dir/src/GridRenderer.cpp.o -c \"/mnt/c/Users/ido54/OneDrive - Shenkar College/Documents/College/Year 2 Semester 1/Programming 3/BattleShipsHW/src/GridRenderer.cpp\"",
+  "file": "/mnt/c/Users/ido54/OneDrive - Shenkar College/Documents/College/Year 2 Semester 1/Programming 3/BattleShipsHW/src/GridRenderer.cpp",
+  "output": "CMakeFiles/BattleshipsHW.dir/src/GridRenderer.cpp.o"
+},
+{
+  "directory": "/mnt/c/Users/ido54/OneDrive - Shenkar College/Documents/College/Year 2 Semester 1/Programming 3/BattleShipsHW/cmake-build-debug-wsl",
   "command": "/usr/bin/c++  -I\"/mnt/c/Users/ido54/OneDrive - Shenkar College/Documents/College/Year 2 Semester 1/Programming 3/BattleShipsHW/include\" -isystem \"/mnt/c/Users/ido54/OneDrive - Shenkar College/Documents/College/Year 2 Semester 1/Programming 3/BattleShipsHW/cmake-build-debug-wsl/_deps/ftxui-src/include\" -g -std=gnu++20 -fdiagnostics-color=always -pedantic-errors -Wall -o CMakeFiles/BattleshipsHW.dir/src/HumanPlayer.cpp.o -c \"/mnt/c/Users/ido54/OneDrive - Shenkar College/Documents/College/Year 2 Semester 1/Programming 3/BattleShipsHW/src/HumanPlayer.cpp\"",
   "file": "/mnt/c/Users/ido54/OneDrive - Shenkar College/Documents/College/Year 2 Semester 1/Programming 3/BattleShipsHW/src/HumanPlayer.cpp",
   "output": "CMakeFiles/BattleshipsHW.dir/src/HumanPlayer.cpp.o"

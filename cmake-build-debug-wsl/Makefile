@@ -305,6 +305,30 @@ src/Grid.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/BattleshipsHW.dir/build.make CMakeFiles/BattleshipsHW.dir/src/Grid.cpp.s
 .PHONY : src/Grid.cpp.s
 
+src/GridRenderer.o: src/GridRenderer.cpp.o
+.PHONY : src/GridRenderer.o
+
+# target to build an object file
+src/GridRenderer.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BattleshipsHW.dir/build.make CMakeFiles/BattleshipsHW.dir/src/GridRenderer.cpp.o
+.PHONY : src/GridRenderer.cpp.o
+
+src/GridRenderer.i: src/GridRenderer.cpp.i
+.PHONY : src/GridRenderer.i
+
+# target to preprocess a source file
+src/GridRenderer.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BattleshipsHW.dir/build.make CMakeFiles/BattleshipsHW.dir/src/GridRenderer.cpp.i
+.PHONY : src/GridRenderer.cpp.i
+
+src/GridRenderer.s: src/GridRenderer.cpp.s
+.PHONY : src/GridRenderer.s
+
+# target to generate assembly for a file
+src/GridRenderer.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/BattleshipsHW.dir/build.make CMakeFiles/BattleshipsHW.dir/src/GridRenderer.cpp.s
+.PHONY : src/GridRenderer.cpp.s
+
 src/HumanPlayer.o: src/HumanPlayer.cpp.o
 .PHONY : src/HumanPlayer.o
 
@@ -428,6 +452,9 @@ help:
 	@echo "... src/Grid.o"
 	@echo "... src/Grid.i"
 	@echo "... src/Grid.s"
+	@echo "... src/GridRenderer.o"
+	@echo "... src/GridRenderer.i"
+	@echo "... src/GridRenderer.s"
 	@echo "... src/HumanPlayer.o"
 	@echo "... src/HumanPlayer.i"
 	@echo "... src/HumanPlayer.s"

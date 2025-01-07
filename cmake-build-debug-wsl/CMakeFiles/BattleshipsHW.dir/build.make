@@ -111,10 +111,24 @@ CMakeFiles/BattleshipsHW.dir/src/Grid.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/BattleshipsHW.dir/src/Grid.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/mnt/c/Users/ido54/OneDrive - Shenkar College/Documents/College/Year 2 Semester 1/Programming 3/BattleShipsHW/src/Grid.cpp" -o CMakeFiles/BattleshipsHW.dir/src/Grid.cpp.s
 
+CMakeFiles/BattleshipsHW.dir/src/GridRenderer.cpp.o: CMakeFiles/BattleshipsHW.dir/flags.make
+CMakeFiles/BattleshipsHW.dir/src/GridRenderer.cpp.o: /mnt/c/Users/ido54/OneDrive\ -\ Shenkar\ College/Documents/College/Year\ 2\ Semester\ 1/Programming\ 3/BattleShipsHW/src/GridRenderer.cpp
+CMakeFiles/BattleshipsHW.dir/src/GridRenderer.cpp.o: CMakeFiles/BattleshipsHW.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/mnt/c/Users/ido54/OneDrive - Shenkar College/Documents/College/Year 2 Semester 1/Programming 3/BattleShipsHW/cmake-build-debug-wsl/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/BattleshipsHW.dir/src/GridRenderer.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/BattleshipsHW.dir/src/GridRenderer.cpp.o -MF CMakeFiles/BattleshipsHW.dir/src/GridRenderer.cpp.o.d -o CMakeFiles/BattleshipsHW.dir/src/GridRenderer.cpp.o -c "/mnt/c/Users/ido54/OneDrive - Shenkar College/Documents/College/Year 2 Semester 1/Programming 3/BattleShipsHW/src/GridRenderer.cpp"
+
+CMakeFiles/BattleshipsHW.dir/src/GridRenderer.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/BattleshipsHW.dir/src/GridRenderer.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/mnt/c/Users/ido54/OneDrive - Shenkar College/Documents/College/Year 2 Semester 1/Programming 3/BattleShipsHW/src/GridRenderer.cpp" > CMakeFiles/BattleshipsHW.dir/src/GridRenderer.cpp.i
+
+CMakeFiles/BattleshipsHW.dir/src/GridRenderer.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/BattleshipsHW.dir/src/GridRenderer.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/mnt/c/Users/ido54/OneDrive - Shenkar College/Documents/College/Year 2 Semester 1/Programming 3/BattleShipsHW/src/GridRenderer.cpp" -o CMakeFiles/BattleshipsHW.dir/src/GridRenderer.cpp.s
+
 CMakeFiles/BattleshipsHW.dir/src/HumanPlayer.cpp.o: CMakeFiles/BattleshipsHW.dir/flags.make
 CMakeFiles/BattleshipsHW.dir/src/HumanPlayer.cpp.o: /mnt/c/Users/ido54/OneDrive\ -\ Shenkar\ College/Documents/College/Year\ 2\ Semester\ 1/Programming\ 3/BattleShipsHW/src/HumanPlayer.cpp
 CMakeFiles/BattleshipsHW.dir/src/HumanPlayer.cpp.o: CMakeFiles/BattleshipsHW.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/mnt/c/Users/ido54/OneDrive - Shenkar College/Documents/College/Year 2 Semester 1/Programming 3/BattleShipsHW/cmake-build-debug-wsl/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/BattleshipsHW.dir/src/HumanPlayer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/mnt/c/Users/ido54/OneDrive - Shenkar College/Documents/College/Year 2 Semester 1/Programming 3/BattleShipsHW/cmake-build-debug-wsl/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/BattleshipsHW.dir/src/HumanPlayer.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/BattleshipsHW.dir/src/HumanPlayer.cpp.o -MF CMakeFiles/BattleshipsHW.dir/src/HumanPlayer.cpp.o.d -o CMakeFiles/BattleshipsHW.dir/src/HumanPlayer.cpp.o -c "/mnt/c/Users/ido54/OneDrive - Shenkar College/Documents/College/Year 2 Semester 1/Programming 3/BattleShipsHW/src/HumanPlayer.cpp"
 
 CMakeFiles/BattleshipsHW.dir/src/HumanPlayer.cpp.i: cmake_force
@@ -128,7 +142,7 @@ CMakeFiles/BattleshipsHW.dir/src/HumanPlayer.cpp.s: cmake_force
 CMakeFiles/BattleshipsHW.dir/src/Player.cpp.o: CMakeFiles/BattleshipsHW.dir/flags.make
 CMakeFiles/BattleshipsHW.dir/src/Player.cpp.o: /mnt/c/Users/ido54/OneDrive\ -\ Shenkar\ College/Documents/College/Year\ 2\ Semester\ 1/Programming\ 3/BattleShipsHW/src/Player.cpp
 CMakeFiles/BattleshipsHW.dir/src/Player.cpp.o: CMakeFiles/BattleshipsHW.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/mnt/c/Users/ido54/OneDrive - Shenkar College/Documents/College/Year 2 Semester 1/Programming 3/BattleShipsHW/cmake-build-debug-wsl/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/BattleshipsHW.dir/src/Player.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/mnt/c/Users/ido54/OneDrive - Shenkar College/Documents/College/Year 2 Semester 1/Programming 3/BattleShipsHW/cmake-build-debug-wsl/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/BattleshipsHW.dir/src/Player.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/BattleshipsHW.dir/src/Player.cpp.o -MF CMakeFiles/BattleshipsHW.dir/src/Player.cpp.o.d -o CMakeFiles/BattleshipsHW.dir/src/Player.cpp.o -c "/mnt/c/Users/ido54/OneDrive - Shenkar College/Documents/College/Year 2 Semester 1/Programming 3/BattleShipsHW/src/Player.cpp"
 
 CMakeFiles/BattleshipsHW.dir/src/Player.cpp.i: cmake_force
@@ -142,7 +156,7 @@ CMakeFiles/BattleshipsHW.dir/src/Player.cpp.s: cmake_force
 CMakeFiles/BattleshipsHW.dir/src/Ship.cpp.o: CMakeFiles/BattleshipsHW.dir/flags.make
 CMakeFiles/BattleshipsHW.dir/src/Ship.cpp.o: /mnt/c/Users/ido54/OneDrive\ -\ Shenkar\ College/Documents/College/Year\ 2\ Semester\ 1/Programming\ 3/BattleShipsHW/src/Ship.cpp
 CMakeFiles/BattleshipsHW.dir/src/Ship.cpp.o: CMakeFiles/BattleshipsHW.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/mnt/c/Users/ido54/OneDrive - Shenkar College/Documents/College/Year 2 Semester 1/Programming 3/BattleShipsHW/cmake-build-debug-wsl/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/BattleshipsHW.dir/src/Ship.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/mnt/c/Users/ido54/OneDrive - Shenkar College/Documents/College/Year 2 Semester 1/Programming 3/BattleShipsHW/cmake-build-debug-wsl/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/BattleshipsHW.dir/src/Ship.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/BattleshipsHW.dir/src/Ship.cpp.o -MF CMakeFiles/BattleshipsHW.dir/src/Ship.cpp.o.d -o CMakeFiles/BattleshipsHW.dir/src/Ship.cpp.o -c "/mnt/c/Users/ido54/OneDrive - Shenkar College/Documents/College/Year 2 Semester 1/Programming 3/BattleShipsHW/src/Ship.cpp"
 
 CMakeFiles/BattleshipsHW.dir/src/Ship.cpp.i: cmake_force
@@ -156,7 +170,7 @@ CMakeFiles/BattleshipsHW.dir/src/Ship.cpp.s: cmake_force
 CMakeFiles/BattleshipsHW.dir/src/main.cpp.o: CMakeFiles/BattleshipsHW.dir/flags.make
 CMakeFiles/BattleshipsHW.dir/src/main.cpp.o: /mnt/c/Users/ido54/OneDrive\ -\ Shenkar\ College/Documents/College/Year\ 2\ Semester\ 1/Programming\ 3/BattleShipsHW/src/main.cpp
 CMakeFiles/BattleshipsHW.dir/src/main.cpp.o: CMakeFiles/BattleshipsHW.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/mnt/c/Users/ido54/OneDrive - Shenkar College/Documents/College/Year 2 Semester 1/Programming 3/BattleShipsHW/cmake-build-debug-wsl/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/BattleshipsHW.dir/src/main.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="/mnt/c/Users/ido54/OneDrive - Shenkar College/Documents/College/Year 2 Semester 1/Programming 3/BattleShipsHW/cmake-build-debug-wsl/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/BattleshipsHW.dir/src/main.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/BattleshipsHW.dir/src/main.cpp.o -MF CMakeFiles/BattleshipsHW.dir/src/main.cpp.o.d -o CMakeFiles/BattleshipsHW.dir/src/main.cpp.o -c "/mnt/c/Users/ido54/OneDrive - Shenkar College/Documents/College/Year 2 Semester 1/Programming 3/BattleShipsHW/src/main.cpp"
 
 CMakeFiles/BattleshipsHW.dir/src/main.cpp.i: cmake_force
@@ -172,6 +186,7 @@ BattleshipsHW_OBJECTS = \
 "CMakeFiles/BattleshipsHW.dir/src/AiPlayer.cpp.o" \
 "CMakeFiles/BattleshipsHW.dir/src/Game.cpp.o" \
 "CMakeFiles/BattleshipsHW.dir/src/Grid.cpp.o" \
+"CMakeFiles/BattleshipsHW.dir/src/GridRenderer.cpp.o" \
 "CMakeFiles/BattleshipsHW.dir/src/HumanPlayer.cpp.o" \
 "CMakeFiles/BattleshipsHW.dir/src/Player.cpp.o" \
 "CMakeFiles/BattleshipsHW.dir/src/Ship.cpp.o" \
@@ -183,6 +198,7 @@ BattleshipsHW_EXTERNAL_OBJECTS =
 BattleshipsHW: CMakeFiles/BattleshipsHW.dir/src/AiPlayer.cpp.o
 BattleshipsHW: CMakeFiles/BattleshipsHW.dir/src/Game.cpp.o
 BattleshipsHW: CMakeFiles/BattleshipsHW.dir/src/Grid.cpp.o
+BattleshipsHW: CMakeFiles/BattleshipsHW.dir/src/GridRenderer.cpp.o
 BattleshipsHW: CMakeFiles/BattleshipsHW.dir/src/HumanPlayer.cpp.o
 BattleshipsHW: CMakeFiles/BattleshipsHW.dir/src/Player.cpp.o
 BattleshipsHW: CMakeFiles/BattleshipsHW.dir/src/Ship.cpp.o
@@ -192,7 +208,7 @@ BattleshipsHW: _deps/ftxui-build/libftxui-component.a
 BattleshipsHW: _deps/ftxui-build/libftxui-dom.a
 BattleshipsHW: _deps/ftxui-build/libftxui-screen.a
 BattleshipsHW: CMakeFiles/BattleshipsHW.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="/mnt/c/Users/ido54/OneDrive - Shenkar College/Documents/College/Year 2 Semester 1/Programming 3/BattleShipsHW/cmake-build-debug-wsl/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable BattleshipsHW"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="/mnt/c/Users/ido54/OneDrive - Shenkar College/Documents/College/Year 2 Semester 1/Programming 3/BattleShipsHW/cmake-build-debug-wsl/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX executable BattleshipsHW"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/BattleshipsHW.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
