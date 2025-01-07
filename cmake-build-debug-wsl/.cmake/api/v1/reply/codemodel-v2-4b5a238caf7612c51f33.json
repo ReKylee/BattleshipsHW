@@ -1,0 +1,151 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.10"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0
+					]
+				},
+				{
+					"build" : "_deps/ftxui-build",
+					"childIndexes" : 
+					[
+						2,
+						3
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-_deps.ftxui-build-Debug-8c2a6bfba2e4b716b3d0.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 1,
+					"source" : "cmake-build-debug-wsl/_deps/ftxui-src",
+					"targetIndexes" : 
+					[
+						1,
+						2,
+						3
+					]
+				},
+				{
+					"build" : "_deps/ftxui-build/examples",
+					"jsonFile" : "directory-_deps.ftxui-build.examples-Debug-be368f08943cc977bb4a.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 1,
+					"source" : "cmake-build-debug-wsl/_deps/ftxui-src/examples"
+				},
+				{
+					"build" : "_deps/ftxui-build/doc",
+					"jsonFile" : "directory-_deps.ftxui-build.doc-Debug-51185d0ca9c106bb5986.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 1,
+					"source" : "cmake-build-debug-wsl/_deps/ftxui-src/doc"
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"childIndexes" : 
+					[
+						1
+					],
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "BattleshipsHW",
+					"targetIndexes" : 
+					[
+						0
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						1,
+						2,
+						3
+					],
+					"name" : "ftxui",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						1,
+						2,
+						3
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "BattleshipsHW::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-BattleshipsHW-Debug-cee82cdca659486469a7.json",
+					"name" : "BattleshipsHW",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "component::@b65f64d0ea8424dee96a",
+					"jsonFile" : "target-component-Debug-b977f19f08c86016360d.json",
+					"name" : "component",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "dom::@b65f64d0ea8424dee96a",
+					"jsonFile" : "target-dom-Debug-426520a3e6ecfa9deb8c.json",
+					"name" : "dom",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "screen::@b65f64d0ea8424dee96a",
+					"jsonFile" : "target-screen-Debug-a04344ddea1dada59169.json",
+					"name" : "screen",
+					"projectIndex" : 1
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/mnt/c/Users/ido54/OneDrive - Shenkar College/Documents/College/Year 2 Semester 1/Programming 3/BattleShipsHW/cmake-build-debug-wsl",
+		"source" : "/mnt/c/Users/ido54/OneDrive - Shenkar College/Documents/College/Year 2 Semester 1/Programming 3/BattleShipsHW"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 6
+	}
+}

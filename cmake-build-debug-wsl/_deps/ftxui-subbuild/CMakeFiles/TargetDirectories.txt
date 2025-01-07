@@ -1,0 +1,3 @@
+/mnt/c/Users/ido54/OneDrive - Shenkar College/Documents/College/Year 2 Semester 1/Programming 3/BattleShipsHW/cmake-build-debug-wsl/_deps/ftxui-subbuild/CMakeFiles/ftxui-populate.dir
+/mnt/c/Users/ido54/OneDrive - Shenkar College/Documents/College/Year 2 Semester 1/Programming 3/BattleShipsHW/cmake-build-debug-wsl/_deps/ftxui-subbuild/CMakeFiles/edit_cache.dir
+/mnt/c/Users/ido54/OneDrive - Shenkar College/Documents/College/Year 2 Semester 1/Programming 3/BattleShipsHW/cmake-build-debug-wsl/_deps/ftxui-subbuild/CMakeFiles/rebuild_cache.dir
