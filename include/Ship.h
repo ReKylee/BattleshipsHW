@@ -1,6 +1,7 @@
 ﻿#ifndef SHIP_H
 #define SHIP_H
 #include <array>
+#include <string>
 
 namespace BattleshipsHW {
 class Ship {
@@ -16,16 +17,16 @@ public:
 	int				   getSize() const;
 	int				   getPivot() const;
 	int				   getHitsTaken() const;
-	char			  *getName() const;
+	std::string		   getName() const;
 	std::array<int, 4> getAABBat(int row, int col, int expand = 0) const;
 	void			   setHorizontal(bool h);
 
 private:
-	char *name;
-	int	  size;
-	int	  pivot;
-	int	  hitsTaken;
-	bool  horizontal;
+	std::string name;
+	int			size;
+	int			pivot;
+	int			hitsTaken;
+	bool		horizontal;
 };
 
 class Carrier : public Ship {

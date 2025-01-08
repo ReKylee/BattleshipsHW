@@ -7,8 +7,8 @@ int getRandomCoordinate() {
 }
 
 void BattleshipsHW::AiPlayer::placeAllShips() {
-	for (const auto &ship: ships) {
-		ship->setHorizontal(std::rand() % 2);
+	for (Ship *ship: ships) {
+		ship->setHorizontal(static_cast<bool>(std::rand()) % 2);
 		int row = getRandomCoordinate(), col = getRandomCoordinate();
 
 		while (!grid.inBounds(row, col, *ship)) {
@@ -17,6 +17,7 @@ void BattleshipsHW::AiPlayer::placeAllShips() {
 		}
 
 		grid.placeShip(row, col, *ship);
+		shipsPlaced++;
 	}
 }
 void BattleshipsHW::AiPlayer::makeMove(Player *opponent, const int row = getRandomCoordinate(),

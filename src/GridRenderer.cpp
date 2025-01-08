@@ -6,32 +6,38 @@
 #include "ftxui/component/component.hpp"
 using namespace BattleshipsHW;
 
-GridRenderer::GridRenderer(Player *p, int *selected_x, int *selected_y, std::function<void()> on_click_func) :
-	on_click(on_click_func), player(p) {
+GridRenderer::GridRenderer(Player &p, int *og_selected_x, int *og_selected_y, std::function<void()> on_click_func) :
+	on_click(on_click_func), selected_x(og_selected_x), selected_y(og_selected_y), player(p) {
 
-	if (!player) {
-		throw std::invalid_argument("Player cannot be null");
-	}
-
-	gridComponent = Container::Vertical({}, selected_y);
+	gridComponent = Container::Vertical({}, selected_x);
 	for (int j = 0; j < Grid::GRID_SIZE; ++j) {
-		Component buttons_in_row = Container::Horizontal({}, selected_x);
+		Component buttons_in_row = Container::Horizontal({}, selected_y);
 
 		for (int i = 0; i < Grid::GRID_SIZE; ++i) {
 
 			ButtonOption option = ButtonOption::Ascii();
 			option.on_click		= on_click;
 			option.transform	= [this, i, j](const EntryState &s) {
-				   std::string cell(1, player->getCell(i, j));
-				   const bool  ships_hidden = player->shipsHidden();
+				   std::string cell(1, player.getCell(i, j));
 
+				   const bool ships_hidden	   = player.shipsHidden();
+				   const auto ship			   = player.getCurrentlySelectedShip();
+				   const bool is_placing_ships = player.isPlacingShips();
 				   if (ships_hidden && cell[0] == Grid::OCCUPIED)
 					   cell = Grid::EMPTY;
 
 				   const std::string label = s.focused ? "[" + cell + "]" //
 													   : " " + cell + " ";
 
-				   const auto element = text(label);
+				   auto element = text(label);
+
+				   if (is_placing_ships && !ships_hidden) {
+
+					   if (const auto extents = ship.getAABBat(*selected_y, *selected_x);
+						   i >= extents[0] && i <= extents[1] && j >= extents[2] && j <= extents[3]) {
+						   element |= bgcolor(Color::Red);
+					   }
+				   }
 
 				   return element;
 			};

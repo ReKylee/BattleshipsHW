@@ -5,7 +5,6 @@
 #include <ftxui/component/component_base.hpp>
 #include <ftxui/component/screen_interactive.hpp>
 #include <ftxui/dom/elements.hpp>
-#include <ftxui/dom/table.hpp>
 namespace BattleshipsHW {
 // --------------------------------------------------
 // Constructors
@@ -29,16 +28,26 @@ void Game::MainGameScreen() const {
 
 	int selected_y = 0, selected_x = 0;
 
-	auto p1_on_click = [&] { player1->makeMove(player2, selected_x % Grid::GRID_SIZE, selected_y % Grid::GRID_SIZE); };
-	// auto p2_on_click = [&] { player2->makeMove(player1, selected_x % Grid::GRID_SIZE, selected_y % Grid::GRID_SIZE);
-	// };
+	auto on_click_on_opponent = [&] {
+		player1->makeMove(player2, selected_y % Grid::GRID_SIZE, selected_x % Grid::GRID_SIZE);
+	};
+	auto p1_on_click = [&] { player1->placeSelectedShip(selected_y, selected_x); };
 
-	GridRenderer p1GridRenderer(player1, &selected_x, &selected_y);
-	GridRenderer p2GridRenderer(player2, &selected_x, &selected_y, p1_on_click);
+	GridRenderer p1GridRenderer(*player1, &selected_x, &selected_y);
+	GridRenderer p2GridRenderer(*player2, &selected_x, &selected_y, on_click_on_opponent);
+
+	p1GridRenderer.gridRenderer |= CatchEvent([&](Event event) {
+		if (event.is_mouse() && event.mouse().button == Mouse::Right) {
+			auto	   ship			= player1->getCurrentlySelectedShip();
+			const bool isHorizontal = ship.isHorizontal();
+			ship.setHorizontal(!isHorizontal);
+			return true;
+		}
+		return false;
+	});
 
 	player2->placeAllShips();
 	const auto layout = Container::Horizontal({p1GridRenderer.gridRenderer, p2GridRenderer.gridRenderer});
-
 	screen.Loop(layout);
 }
 
@@ -69,9 +78,7 @@ void Game::run() const {
 	});
 	main_menu |= Modal(exit, &exit_menu);
 	screen.Loop(main_menu);
-
-	MainGameScreen();
 }
-void Game::setup() const {}
+void Game::setup() const { MainGameScreen(); }
 void Game::start() const {}
 } // namespace BattleshipsHW

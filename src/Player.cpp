@@ -19,10 +19,24 @@ void BattleshipsHW::Player::makeMove(Player *opponent, const int row, const int 
 	}
 }
 void BattleshipsHW::Player::markHit(const int row, const int col) { grid.markHit(row, col); }
-
 void BattleshipsHW::Player::markMiss(const int row, const int col) { grid.markMiss(row, col); }
+
 char BattleshipsHW::Player::getCell(const int row, const int col) const { return grid.getCell(row, col); }
-bool BattleshipsHW::Player::shipsHidden() const { return hideShips; }
+BattleshipsHW::Ship &BattleshipsHW::Player::getShip(const int index) const { return *ships[index]; }
+bool				 BattleshipsHW::Player::shipsHidden() const { return hideShips; }
+bool				 BattleshipsHW::Player::isPlacingShips() const { return shipsPlaced < NUM_SHIPS; }
+void				 BattleshipsHW::Player::selectShip(const int index) { currentlySelectedShipIndex = index; }
+
+void BattleshipsHW::Player::placeSelectedShip(const int row, const int col) {
+
+	if (const Ship &ship = *ships[currentlySelectedShipIndex]; grid.inBounds(row, col, ship)) {
+		grid.placeShip(row, col, ship);
+		shipsPlaced++;
+	}
+}
+BattleshipsHW::Ship &BattleshipsHW::Player::getCurrentlySelectedShip() const {
+	return *ships[currentlySelectedShipIndex];
+}
 
 bool BattleshipsHW::Player::allShipsSunk() const {
 	for (auto &ship: ships) {
@@ -34,8 +48,7 @@ bool BattleshipsHW::Player::allShipsSunk() const {
 }
 
 BattleshipsHW::Player::Player(const char *str, const bool shouldHideShips) :
-	playerName(new char[strlen(str) + 1]), hideShips(shouldHideShips) {
-	strcpy(playerName, str);
+	playerName(str), hideShips(shouldHideShips), shipsPlaced(0), currentlySelectedShipIndex(0) {
 	ships[0] = new Carrier();
 	ships[1] = new Battleship();
 	ships[2] = new Cruiser();
@@ -43,7 +56,6 @@ BattleshipsHW::Player::Player(const char *str, const bool shouldHideShips) :
 	ships[4] = new Destroyer();
 }
 BattleshipsHW::Player::~Player() {
-	delete[] playerName;
 	for (const auto &ship: ships) {
 		delete ship;
 	}

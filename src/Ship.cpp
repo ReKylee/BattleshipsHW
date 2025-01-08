@@ -4,22 +4,20 @@
 #include <cstring>
 #include <iostream>
 
-bool  BattleshipsHW::Ship::isSunk() const { return hitsTaken >= size; }
-bool  BattleshipsHW::Ship::isHorizontal() const { return horizontal; }
-int	  BattleshipsHW::Ship::getSize() const { return size; }
-int	  BattleshipsHW::Ship::getPivot() const { return pivot; }
-int	  BattleshipsHW::Ship::getHitsTaken() const { return hitsTaken; }
-char *BattleshipsHW::Ship::getName() const { return name; }
+bool		BattleshipsHW::Ship::isSunk() const { return hitsTaken >= size; }
+bool		BattleshipsHW::Ship::isHorizontal() const { return horizontal; }
+int			BattleshipsHW::Ship::getSize() const { return size; }
+int			BattleshipsHW::Ship::getPivot() const { return pivot; }
+int			BattleshipsHW::Ship::getHitsTaken() const { return hitsTaken; }
+std::string BattleshipsHW::Ship::getName() const { return name; }
 
 void BattleshipsHW::Ship::setHorizontal(const bool h) { horizontal = h; }
 
 
 BattleshipsHW::Ship::Ship(const char *shipName, const int shipSize, const int shipPivot) :
-	name(new char[strlen(shipName) + 1]), size(shipSize), pivot(shipPivot), hitsTaken(0), horizontal(false) {
-	strcpy(name, shipName);
-}
+	name(shipName), size(shipSize), pivot(shipPivot), hitsTaken(0), horizontal(false) {}
 
-BattleshipsHW::Ship::~Ship() { delete[] name; }
+BattleshipsHW::Ship::~Ship() {}
 
 void BattleshipsHW::Ship::takeHit() {
 	if (hitsTaken < size) {

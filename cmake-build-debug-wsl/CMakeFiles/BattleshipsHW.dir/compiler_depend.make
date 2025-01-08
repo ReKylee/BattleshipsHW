@@ -306,7 +306,6 @@ CMakeFiles/BattleshipsHW.dir/src/Game.cpp.o: /mnt/c/Users/ido54/OneDrive\ -\ She
   _deps/ftxui-src/include/ftxui/dom/linear_gradient.hpp \
   _deps/ftxui-src/include/ftxui/dom/node.hpp \
   _deps/ftxui-src/include/ftxui/dom/requirement.hpp \
-  _deps/ftxui-src/include/ftxui/dom/table.hpp \
   _deps/ftxui-src/include/ftxui/dom/take_any_args.hpp \
   _deps/ftxui-src/include/ftxui/screen/box.hpp \
   _deps/ftxui-src/include/ftxui/screen/color.hpp \
@@ -2183,7 +2182,6 @@ CMakeFiles/BattleshipsHW.dir/src/main.cpp.o: /mnt/c/Users/ido54/OneDrive\ -\ She
   /usr/include/c++/13/bits/hashtable_policy.h \
   /usr/include/c++/13/bits/invoke.h \
   /usr/include/c++/13/bits/ios_base.h \
-  /usr/include/c++/13/bits/istream.tcc \
   /usr/include/c++/13/bits/iterator_concepts.h \
   /usr/include/c++/13/bits/locale_classes.h \
   /usr/include/c++/13/bits/locale_classes.tcc \
@@ -2269,8 +2267,6 @@ CMakeFiles/BattleshipsHW.dir/src/main.cpp.o: /mnt/c/Users/ido54/OneDrive\ -\ She
   /usr/include/c++/13/initializer_list \
   /usr/include/c++/13/ios \
   /usr/include/c++/13/iosfwd \
-  /usr/include/c++/13/iostream \
-  /usr/include/c++/13/istream \
   /usr/include/c++/13/memory \
   /usr/include/c++/13/new \
   /usr/include/c++/13/numbers \

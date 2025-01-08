@@ -1,6 +1,5 @@
 #include <cstdlib> // For std::rand(), std::srand()
 #include <ctime>   // For std::time()
-#include <iostream>
 #include "AiPlayer.h"
 #include "Game.h"
 #include "HumanPlayer.h"
@@ -21,7 +20,7 @@ int main() {
 
 	game.run();
 	// Set up the game (place all ships)
-
+	game.setup();
 	game.start();
 	return 0;
 }
