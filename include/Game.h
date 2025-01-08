@@ -16,12 +16,11 @@ public:
 	~Game();
 
 	// Methods
-	void			 run() const;
-	void			 setup() const;
-	void			 start() const;
-	bool			 isGameOver() const;
-	static Component DrawGrid(const Component &grid);
+	void setup() const;
+	void start() const;
+	bool isGameOver() const;
 	// These control the different screens you see.
+	void run() const;
 	void MainGameScreen() const;
 
 private:

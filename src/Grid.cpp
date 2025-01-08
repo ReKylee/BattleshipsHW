@@ -1,7 +1,5 @@
 ﻿#include "Grid.h"
-
-#include <ftxui/dom/table.hpp>
-
+#include "Ship.h"
 #include "ftxui/component/component.hpp"
 
 BattleshipsHW::Grid::Grid() {
@@ -18,30 +16,17 @@ bool BattleshipsHW::Grid::isTileOccupied(const int row, const int col) const {
 	return cells[row][col] == OCCUPIED && cells[row][col] == HIT;
 }
 
-bool BattleshipsHW::Grid::inBounds(const int row, const int col, const int shipSize, const int pivot,
-								   const bool horizontal) const {
-	int startRow = 0;
-	int endRow	 = 0;
-	int startCol = 0;
-	int endCol	 = 0;
+bool BattleshipsHW::Grid::inBounds(const int row, const int col, const Ship &ship) const {
+	const std::array<int, 4> extends = ship.getAABBat(row, col);
 
-	if (horizontal) {
-		startRow = std::max(0, row - 1);							// Buffer: 1 row below (if within bounds)
-		endRow	 = std::min(GRID_SIZE - 1, row + 1);				// Buffer: 1 row above (if within bounds)
-		startCol = std::max(0, col - pivot - 1);					// Buffer: 1 column to the left (if within bounds)
-		endCol	 = std::min(GRID_SIZE - 1, col + shipSize - pivot); // Buffer: 1 column to the right (if within bounds)
-	} else {
-		startRow = std::max(0, row - pivot - 1);					// Buffer: 1 row below (if within bounds)
-		endRow	 = std::min(GRID_SIZE - 1, row + shipSize - pivot); // Buffer: 1 row above (if within bounds)
-		startCol = std::max(0, col - 1);							// Buffer: 1 column to the left (if within bounds)
-		endCol	 = std::min(GRID_SIZE - 1, col + 1);				// Buffer: 1 column to the right (if within bounds)
+	if (extends[0] < 0 || extends[2] < 0 || extends[1] >= Grid::GRID_SIZE || extends[3] >= Grid::GRID_SIZE) {
+		return false; // Ship would clip the grid boundaries
 	}
 
-	// Check for collisions in the buffer zone
-	for (int r = startRow; r <= endRow; ++r) {
-		for (int c = startCol; c <= endCol; ++c) {
+	for (int r = extends[0] - 1; r <= extends[1] + 1; ++r) {	 // Extend by 1 row on both sides
+		for (int c = extends[2] - 1; c <= extends[3] + 1; ++c) { // Extend by 1 column on both sides
 			if (cells[r][c] != EMPTY) {
-				return false; // Collision detected
+				return false;
 			}
 		}
 	}
@@ -50,27 +35,14 @@ bool BattleshipsHW::Grid::inBounds(const int row, const int col, const int shipS
 	return true;
 }
 
-void BattleshipsHW::Grid::placeShip(const int row, const int col, const int shipSize, const int pivot,
-									const bool horizontal) {
-	int startRow = 0;
-	int endRow	 = 0;
-	int startCol = 0;
-	int endCol	 = 0;
 
-	if (horizontal) {
-		startRow = std::max(0, row);
-		endRow	 = std::min(GRID_SIZE - 1, row);
-		startCol = std::max(0, col - pivot);
-		endCol	 = std::min(GRID_SIZE - 1, col + shipSize - pivot);
-	} else {
-		startRow = std::max(0, row - pivot);
-		endRow	 = std::min(GRID_SIZE - 1, row + shipSize - pivot);
-		startCol = std::max(0, col);
-		endCol	 = std::min(GRID_SIZE - 1, col);
-	}
+void BattleshipsHW::Grid::placeShip(const int row, const int col, const Ship &ship) {
 
-	for (int r = startRow; r <= endRow; ++r) {
-		for (int c = startCol; c <= endCol; ++c) {
+
+	const std::array<int, 4> extends = ship.getAABBat(row, col);
+
+	for (int r = extends[0]; r <= extends[1]; ++r) {
+		for (int c = extends[2]; c <= extends[3]; ++c) {
 			cells[r][c] = OCCUPIED;
 		}
 	}

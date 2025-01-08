@@ -9,6 +9,10 @@ using namespace BattleshipsHW;
 GridRenderer::GridRenderer(Player *p, int *selected_x, int *selected_y, std::function<void()> on_click_func) :
 	on_click(on_click_func), player(p) {
 
+	if (!player) {
+		throw std::invalid_argument("Player cannot be null");
+	}
+
 	gridComponent = Container::Vertical({}, selected_y);
 	for (int j = 0; j < Grid::GRID_SIZE; ++j) {
 		Component buttons_in_row = Container::Horizontal({}, selected_x);
@@ -18,9 +22,16 @@ GridRenderer::GridRenderer(Player *p, int *selected_x, int *selected_y, std::fun
 			ButtonOption option = ButtonOption::Ascii();
 			option.on_click		= on_click;
 			option.transform	= [this, i, j](const EntryState &s) {
-				   const char single_cell[2] = {player->getCell(i, j), '\0'};
+				   std::string cell(1, player->getCell(i, j));
+				   const bool  ships_hidden = player->shipsHidden();
 
-				   auto element = text(single_cell);
+				   if (ships_hidden && cell[0] == Grid::OCCUPIED)
+					   cell = Grid::EMPTY;
+
+				   const std::string label = s.focused && !ships_hidden ? "[" + cell + "]" //
+																		: " " + cell + " ";
+
+				   const auto element = text(label);
 
 				   return element;
 			};

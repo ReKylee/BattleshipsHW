@@ -3,6 +3,8 @@
 #define GRID_H
 #include "ftxui/component/loop.hpp"
 
+#include <Ship.h>
+
 namespace BattleshipsHW {
 class Grid {
 public:
@@ -19,9 +21,9 @@ public:
 
 	bool isTileOccupied(int row, int col) const;
 
-	bool inBounds(int row, int col, int shipSize, int pivot, bool horizontal) const;
+	bool inBounds(int row, int col, const Ship &ship) const;
 
-	void placeShip(int row, int col, int shipSize, int pivot, bool horizontal);
+	void placeShip(int row, int col, const Ship &ship);
 
 	void markHit(int row, int col);
 

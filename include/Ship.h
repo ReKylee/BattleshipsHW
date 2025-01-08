@@ -1,5 +1,6 @@
 ﻿#ifndef SHIP_H
 #define SHIP_H
+#include <array>
 
 namespace BattleshipsHW {
 class Ship {
@@ -10,17 +11,21 @@ public:
 
 	virtual void takeHit();
 
-	bool  isSunk() const;
-	int	  getSize() const;
-	int	  getPivot() const;
-	int	  getHitsTaken() const;
-	char *getName() const;
+	bool			   isSunk() const;
+	bool			   isHorizontal() const;
+	int				   getSize() const;
+	int				   getPivot() const;
+	int				   getHitsTaken() const;
+	char			  *getName() const;
+	std::array<int, 4> getAABBat(int row, int col, int expand = 0) const;
+	void			   setHorizontal(bool h);
 
 private:
 	char *name;
 	int	  size;
 	int	  pivot;
 	int	  hitsTaken;
+	bool  horizontal;
 };
 
 class Carrier : public Ship {
@@ -30,22 +35,22 @@ public:
 
 class Battleship : public Ship {
 public:
-	Battleship() : Ship("Battleship", 4, 1) {};
+	Battleship() : Ship("Battleship", 5, 1) {};
 };
 
 class Cruiser : public Ship {
 public:
-	Cruiser() : Ship("Cruiser", 3, 1) {};
+	Cruiser() : Ship("Cruiser", 5, 1) {};
 };
 
 class Submarine : public Ship {
 public:
-	Submarine() : Ship("Submarine", 3, 1) {};
+	Submarine() : Ship("Submarine", 5, 1) {};
 };
 
 class Destroyer : public Ship {
 public:
-	Destroyer() : Ship("Destroyer", 2, 0) {};
+	Destroyer() : Ship("Destroyer", 5, 0) {};
 };
 } // namespace BattleshipsHW
 

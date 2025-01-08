@@ -29,18 +29,17 @@ void Game::MainGameScreen() const {
 
 	int selected_y = 0, selected_x = 0;
 
-	auto on_click = [&] { player1->makeMove(player2, selected_x, selected_y); };
+	auto p1_on_click = [&] { player1->makeMove(player2, selected_x % Grid::GRID_SIZE, selected_y % Grid::GRID_SIZE); };
+	auto p2_on_click = [&] { player2->makeMove(player1, selected_x % Grid::GRID_SIZE, selected_y % Grid::GRID_SIZE); };
 
-	GridRenderer p1GridRenderer(player1, &selected_x, &selected_y, on_click);
-	GridRenderer p2GridRenderer(player2, &selected_x, &selected_y, on_click);
+	GridRenderer p1GridRenderer(player1, &selected_x, &selected_y, p1_on_click);
+	GridRenderer p2GridRenderer(player2, &selected_x, &selected_y, p2_on_click);
 
-	p1GridRenderer.on_click = on_click;
-	p2GridRenderer.on_click = on_click;
-
+	player2->placeAllShips();
 	const auto layout = Container::Horizontal({p1GridRenderer.gridRenderer, p2GridRenderer.gridRenderer});
 
 	screen.Loop(layout);
-} // namespace BattleshipsHW
+}
 
 Component Exit(ScreenInteractive &screen, bool &exit_confirmed) {
 	auto exit_btn	= Button("Exit", screen.ExitLoopClosure()) | center;
