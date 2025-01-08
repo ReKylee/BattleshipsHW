@@ -28,8 +28,8 @@ GridRenderer::GridRenderer(Player *p, int *selected_x, int *selected_y, std::fun
 				   if (ships_hidden && cell[0] == Grid::OCCUPIED)
 					   cell = Grid::EMPTY;
 
-				   const std::string label = s.focused && !ships_hidden ? "[" + cell + "]" //
-																		: " " + cell + " ";
+				   const std::string label = s.focused ? "[" + cell + "]" //
+													   : " " + cell + " ";
 
 				   const auto element = text(label);
 
