@@ -122,6 +122,5 @@ void Game::run() const {
 	main_menu |= Modal(exit, &exit_menu);
 	screen.Loop(main_menu);
 }
-void Game::setup() const { MainGameScreen(); }
-void Game::start() const {}
+void Game::start() const { MainGameScreen(); }
 } // namespace BattleshipsHW

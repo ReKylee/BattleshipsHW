@@ -36,10 +36,10 @@ GridRenderer::GridRenderer(Player &p, int *og_selected_x, int *og_selected_y, st
 					   //{startRow, endRow, startCol, endCol};
 					   if (const auto extents = ship.getAABBat(*selected_y, *selected_x);
 						   j >= extents[0] && j <= extents[1] && i >= extents[2] && i <= extents[3]) {
-						   element = text(label) | bgcolor(Color::Pink3) | color(Color::Black);
+						   element |= bgcolor(Color::Pink3) | color(Color::Black);
 					   }
 				   }
-				   element = text(label) | bgcolor(Color::Blue) | color(Color::DarkBlue);
+				   element |= bgcolor(Color::Blue) | color(Color::DarkBlue);
 
 				   return element;
 			};

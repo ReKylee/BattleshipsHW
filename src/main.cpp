@@ -19,8 +19,6 @@ int main() {
 	const Game game(p1, p2);
 
 	game.run();
-	// Set up the game (place all ships)
-	game.setup();
 	game.start();
 	return 0;
 }

@@ -16,7 +16,6 @@ public:
 	~Game();
 
 	// Methods
-	void setup() const;
 	void start() const;
 	bool isGameOver() const;
 	// These control the different screens you see.
