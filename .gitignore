@@ -4,3 +4,9 @@
 /cmake-build-debug-wsl/CMakeFiles/BattleshipsHW.dir/
 /cmake-build-debug-wsl/BattleshipsHW
 /cmake-build-debug-wsl/Testing/
+
+/cmake-build-debug-mingw/_deps/ftxui-build/
+/cmake-build-debug-mingw/.cmake/api/v1/reply/
+/cmake-build-debug-mingw/CMakeFiles/BattleshipsHW.dir/
+/cmake-build-debug-mingw/BattleshipsHW
+/cmake-build-debug-mingw/Testing/
