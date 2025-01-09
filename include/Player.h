@@ -16,9 +16,10 @@ public:
 	bool shipsHidden() const;
 	bool isPlacingShips() const;
 
-	char  getCell(int row, int col) const;
-	Ship &getShip(int index) const;
-	Ship &getCurrentlySelectedShip() const;
+	char		getCell(int row, int col) const;
+	std::string getName() const;
+	Ship	   &getShip(int index) const;
+	Ship	   &getCurrentlySelectedShip() const;
 
 	void		 selectShip(int index);
 	void		 placeSelectedShip(int row, int col);

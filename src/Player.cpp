@@ -18,19 +18,32 @@ void Player::makeMove(Player *opponent, const int row, const int col) {
 			break;
 	}
 }
-void Player::markHit(const int row, const int col) { grid.markHit(row, col); }
+void Player::markHit(const int row, const int col) {
+	grid.markHit(row, col);
+
+	for (const auto ship: ships) {
+
+		if (auto bounds = ship->getAABB();
+			row >= bounds[0] && row <= bounds[1] && col >= bounds[2] && col <= bounds[3]) {
+			ship->takeHit();
+			break;
+		}
+	}
+}
+
 void Player::markMiss(const int row, const int col) { grid.markMiss(row, col); }
 
-char  Player::getCell(const int row, const int col) const { return grid.getCell(row, col); }
-Ship &Player::getShip(const int index) const { return *ships[index]; }
-bool  Player::shipsHidden() const { return hideShips; }
-bool  Player::isPlacingShips() const {
-	 for (const Ship *ship: ships) {
-		 if (!ship->isPlaced()) {
-			 return true;
-		 }
-	 }
-	 return false;
+char		Player::getCell(const int row, const int col) const { return grid.getCell(row, col); }
+std::string Player::getName() const { return playerName; }
+Ship	   &Player::getShip(const int index) const { return *ships[index]; }
+bool		Player::shipsHidden() const { return hideShips; }
+bool		Player::isPlacingShips() const {
+	   for (const Ship *ship: ships) {
+		   if (!ship->isPlaced()) {
+			   return true;
+		   }
+	   }
+	   return false;
 }
 void Player::selectShip(const int index) { currentlySelectedShipIndex = index; }
 
@@ -39,6 +52,7 @@ void Player::placeSelectedShip(const int row, const int col) {
 	if (Ship &ship = *ships[currentlySelectedShipIndex]; !ship.isPlaced() && grid.inBounds(row, col, ship)) {
 		grid.placeShip(row, col, ship);
 		ship.setPlaced(true);
+		ship.setPos(row, col);
 	}
 }
 void Player::rotateSelectedShip() const {
@@ -48,7 +62,7 @@ void Player::rotateSelectedShip() const {
 Ship &Player::getCurrentlySelectedShip() const { return *ships[currentlySelectedShipIndex]; }
 
 bool Player::allShipsSunk() const {
-	for (auto &ship: ships) {
+	for (const auto ship: ships) {
 		if (!ship->isSunk()) {
 			return false;
 		}
@@ -57,7 +71,7 @@ bool Player::allShipsSunk() const {
 }
 
 Player::Player(const char *str, const bool shouldHideShips) :
-	playerName(str), hideShips(shouldHideShips), currentlySelectedShipIndex(0) {
+	playerName(str), currentlySelectedShipIndex(0), hideShips(shouldHideShips) {
 	ships[0] = new Carrier();
 	ships[1] = new Battleship();
 	ships[2] = new Cruiser();

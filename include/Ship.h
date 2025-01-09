@@ -15,22 +15,26 @@ public:
 	bool			   isSunk() const;
 	bool			   isHorizontal() const;
 	int				   getSize() const;
+	std::array<int, 2> getPosition() const;
 	int				   getPivot() const;
 	int				   getHitsTaken() const;
 	std::string		   getName() const;
 	std::array<int, 4> getAABBat(int row, int col, int expand = 0) const;
+	std::array<int, 4> getAABB() const;
 	void			   setPlaced(bool place);
+	void			   setPos(int row, int col);
 	bool			   isPlaced() const;
 	void			   setHorizontal(bool h);
 	void			   rotate();
 
 private:
-	std::string name;
-	int			size;
-	int			pivot;
-	int			hitsTaken;
-	bool		horizontal;
-	bool		placed;
+	std::string		   name;
+	int				   size;
+	int				   pivot;
+	std::array<int, 2> pos;
+	int				   hitsTaken;
+	bool			   horizontal;
+	bool			   placed;
 };
 
 class Carrier : public Ship {

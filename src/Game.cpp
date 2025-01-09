@@ -25,15 +25,31 @@ bool Game::isGameOver() const { return player1->allShipsSunk() || player2->allSh
 void Game::MainGameScreen() const {
 	auto screen = ScreenInteractive::Fullscreen();
 	using namespace ftxui;
+	player2->placeAllShips();
 
 	int selected_y = 0, selected_x = 0;
 
+	std::string winnerName;
+	bool		showWinner = false;
+
 	auto on_click_on_opponent = [&] {
-		player1->makeMove(player2, selected_y % Grid::GRID_SIZE, selected_x % Grid::GRID_SIZE);
+		if (!player1->isPlacingShips() && !player2->isPlacingShips()) {
+			player1->makeMove(player2, selected_y % Grid::GRID_SIZE, selected_x % Grid::GRID_SIZE);
+			player2->makeMove(player1, selected_y % Grid::GRID_SIZE, selected_x % Grid::GRID_SIZE);
+			if (player2->allShipsSunk()) {
+				winnerName = player1->getName();
+				showWinner = true;
+
+			} else if (player1->allShipsSunk()) {
+				winnerName = player2->getName();
+				showWinner = true;
+			}
+		}
 	};
+	auto p1_on_click = [&] { player1->placeSelectedShip(selected_y, selected_x); };
 
 	GridRenderer p1GridRenderer(*player1, &selected_x, &selected_y);
-	GridRenderer p2GridRenderer(*player2, &selected_x, &selected_y);
+	GridRenderer p2GridRenderer(*player2, &selected_x, &selected_y, on_click_on_opponent);
 
 	std::vector<std::string> p1ShipNames;
 	p1ShipNames.reserve(player1->NUM_SHIPS);
@@ -51,8 +67,13 @@ void Game::MainGameScreen() const {
 	const auto p1ShipsList = Radiobox(radiobox_option);
 
 
-	auto	   p1_on_click		 = [&] { player1->placeSelectedShip(selected_y, selected_x); };
 	const auto place_ship_button = Button("Place Ship", p1_on_click);
+
+	const auto quitButton	   = Button("Quit", [&screen] { screen.Exit(); });
+	const auto winnerComponent = Renderer(quitButton, [&] {
+		return vbox({text(winnerName), quitButton->Render()}) | center | border | bgcolor(Color::Blue) |
+			   color(Color::DarkBlue);
+	});
 
 	auto layout = Container::Horizontal({//
 										 p1GridRenderer.gridRenderer, p2GridRenderer.gridRenderer,
@@ -60,13 +81,16 @@ void Game::MainGameScreen() const {
 				  | bgcolor(Color::Blue) | color(Color::DarkBlue);
 
 	layout |= CatchEvent([&](Event event) {
-		if (event.is_mouse() && event.mouse().button == Mouse::Right && event.mouse().motion == Mouse::Pressed) {
+		if (player1->isPlacingShips() &&
+			(event.is_mouse() && event.mouse().button == Mouse::Right && event.mouse().motion == Mouse::Pressed)) {
 			player1->rotateSelectedShip();
 			return true;
 		}
 		return false;
 	});
-	player2->placeAllShips();
+
+
+	layout |= Modal(winnerComponent, &showWinner);
 	screen.Loop(layout);
 }
 
@@ -93,7 +117,7 @@ void Game::run() const {
 		auto e = vbox({text("Choose!") | bold | center, separator(), inner}) | border | center;
 		if (exit_menu)
 			e |= dim;
-		return e;
+		return e | bgcolor(Color::Blue) | color(Color::DarkBlue);
 	});
 	main_menu |= Modal(exit, &exit_menu);
 	screen.Loop(main_menu);

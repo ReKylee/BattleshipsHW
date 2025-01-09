@@ -18,9 +18,15 @@ void BattleshipsHW::AiPlayer::placeAllShips() {
 
 		grid.placeShip(row, col, *ship);
 		ship->setPlaced(true);
+		ship->setPos(row, col);
 	}
 }
-void BattleshipsHW::AiPlayer::makeMove(Player *opponent, const int row = getRandomCoordinate(),
-									   const int col = getRandomCoordinate()) {
-	Player::makeMove(opponent, row, col);
+void BattleshipsHW::AiPlayer::makeMove(Player *opponent, const int row, const int col) {
+	int rand_row = getRandomCoordinate(), rand_col = getRandomCoordinate();
+
+	while (opponent->getCell(rand_row, rand_col) == Grid::MISS || opponent->getCell(rand_row, rand_col) == Grid::HIT) {
+		rand_row = getRandomCoordinate();
+		rand_col = getRandomCoordinate();
+	}
+	Player::makeMove(opponent, rand_row, rand_col);
 }
