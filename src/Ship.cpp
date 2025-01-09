@@ -11,11 +11,16 @@ int			BattleshipsHW::Ship::getPivot() const { return pivot; }
 int			BattleshipsHW::Ship::getHitsTaken() const { return hitsTaken; }
 std::string BattleshipsHW::Ship::getName() const { return name; }
 
+void BattleshipsHW::Ship::setPlaced(const bool place) { placed = place; }
+bool BattleshipsHW::Ship::isPlaced() const { return placed; }
+
+
 void BattleshipsHW::Ship::setHorizontal(const bool h) { horizontal = h; }
+void BattleshipsHW::Ship::rotate() { horizontal = !horizontal; }
 
 
 BattleshipsHW::Ship::Ship(const char *shipName, const int shipSize, const int shipPivot) :
-	name(shipName), size(shipSize), pivot(shipPivot), hitsTaken(0), horizontal(false) {}
+	name(shipName), size(shipSize), pivot(shipPivot), hitsTaken(0), horizontal(false), placed(false) {}
 
 BattleshipsHW::Ship::~Ship() {}
 

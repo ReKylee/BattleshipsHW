@@ -17,7 +17,7 @@ void BattleshipsHW::AiPlayer::placeAllShips() {
 		}
 
 		grid.placeShip(row, col, *ship);
-		shipsPlaced++;
+		ship->setPlaced(true);
 	}
 }
 void BattleshipsHW::AiPlayer::makeMove(Player *opponent, const int row = getRandomCoordinate(),

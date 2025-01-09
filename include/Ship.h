@@ -19,7 +19,10 @@ public:
 	int				   getHitsTaken() const;
 	std::string		   getName() const;
 	std::array<int, 4> getAABBat(int row, int col, int expand = 0) const;
+	void			   setPlaced(bool place);
+	bool			   isPlaced() const;
 	void			   setHorizontal(bool h);
+	void			   rotate();
 
 private:
 	std::string name;
@@ -27,6 +30,7 @@ private:
 	int			pivot;
 	int			hitsTaken;
 	bool		horizontal;
+	bool		placed;
 };
 
 class Carrier : public Ship {
@@ -36,22 +40,22 @@ public:
 
 class Battleship : public Ship {
 public:
-	Battleship() : Ship("Battleship", 5, 1) {};
+	Battleship() : Ship("Battleship", 4, 1) {};
 };
 
 class Cruiser : public Ship {
 public:
-	Cruiser() : Ship("Cruiser", 5, 1) {};
+	Cruiser() : Ship("Cruiser", 3, 1) {};
 };
 
 class Submarine : public Ship {
 public:
-	Submarine() : Ship("Submarine", 5, 1) {};
+	Submarine() : Ship("Submarine", 3, 1) {};
 };
 
 class Destroyer : public Ship {
 public:
-	Destroyer() : Ship("Destroyer", 5, 0) {};
+	Destroyer() : Ship("Destroyer", 2, 0) {};
 };
 } // namespace BattleshipsHW
 
