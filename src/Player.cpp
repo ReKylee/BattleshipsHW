@@ -1,6 +1,5 @@
 ﻿#include "Player.h"
 
-#include <cstring>
 
 using namespace BattleshipsHW;
 void Player::makeMove(Player *opponent, const int row, const int col) {

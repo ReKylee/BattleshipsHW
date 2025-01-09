@@ -14,7 +14,7 @@ In my testing, the program did not display correctly in IDE terminals.
 ```bash
 cd cmake-build-debug-wsl
 cmake ..
-./Catalog
+./BattleshipsHW
 ```
 
 ---
@@ -24,10 +24,11 @@ cmake ..
 ```bash
 cd cmake-build-debug-mingw
 cmake ..
-./Catalog.exe
+./BattleshipsHW.exe
 ```
 
 ---
 
 ## Usage
+
 # TODO !!

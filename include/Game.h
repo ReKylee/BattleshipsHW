@@ -1,10 +1,8 @@
 ﻿
-#ifndef GAME_H
-#define GAME_H
+#pragma once
 
 #include <Player.h>
 #include <ftxui/component/loop.hpp>
-#include <ftxui/dom/elements.hpp>
 
 namespace BattleshipsHW {
 using namespace ftxui;
@@ -16,10 +14,15 @@ public:
 	~Game();
 
 	// Methods
+	/**
+	 * @brief This function starts the game.
+	 */
 	void start() const;
-	bool isGameOver() const;
-	// These control the different screens you see.
+	/**
+	 * @brief This function shows the main menu screen.
+	 */
 	void run() const;
+	// These control the different screens you see.
 	void MainGameScreen() const;
 
 private:
@@ -28,5 +31,3 @@ private:
 };
 
 } // namespace BattleshipsHW
-
-#endif // GAME_H

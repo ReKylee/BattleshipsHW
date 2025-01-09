@@ -1,7 +1,6 @@
 ﻿#include "Ship.h"
 
 #include <Grid.h>
-#include <cstring>
 #include <iostream>
 
 bool			   BattleshipsHW::Ship::isSunk() const { return hitsTaken >= size; }

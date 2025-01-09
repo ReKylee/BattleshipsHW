@@ -1,6 +1,4 @@
-﻿
-#ifndef HUMANPLAYER_H
-#define HUMANPLAYER_H
+﻿#pragma once
 
 #include "Player.h"
 namespace BattleshipsHW {
@@ -13,5 +11,3 @@ public:
 };
 
 } // namespace BattleshipsHW
-
-#endif // HUMANPLAYER_H
