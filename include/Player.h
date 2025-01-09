@@ -6,6 +6,7 @@
 namespace BattleshipsHW {
 
 class Player {
+
 public:
 	constexpr static int NUM_SHIPS = 5;
 	explicit Player(const char *str, bool shouldHideShips = false);
@@ -15,9 +16,10 @@ public:
 	bool shipsHidden() const;
 	bool isPlacingShips() const;
 
-	char		 getCell(int row, int col) const;
-	Ship		&getShip(int index) const;
-	Ship		&getCurrentlySelectedShip() const;
+	char  getCell(int row, int col) const;
+	Ship &getShip(int index) const;
+	Ship &getCurrentlySelectedShip() const;
+
 	void		 selectShip(int index);
 	void		 placeSelectedShip(int row, int col);
 	void		 rotateSelectedShip() const;
@@ -31,10 +33,10 @@ public:
 protected:
 	std::string playerName;
 	Ship	   *ships[NUM_SHIPS];
+	int			currentlySelectedShipIndex;
 
 	Grid grid;
 	bool hideShips;
-	int	 currentlySelectedShipIndex;
 };
 
 } // namespace BattleshipsHW

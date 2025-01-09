@@ -33,17 +33,18 @@ void Game::MainGameScreen() const {
 	};
 
 	GridRenderer p1GridRenderer(*player1, &selected_x, &selected_y);
-	GridRenderer p2GridRenderer(*player2, &selected_x, &selected_y, on_click_on_opponent);
+	GridRenderer p2GridRenderer(*player2, &selected_x, &selected_y);
 
-	std::vector<std::string> p1ShipNames[player1->NUM_SHIPS];
+	std::vector<std::string> p1ShipNames;
+	p1ShipNames.reserve(player1->NUM_SHIPS);
 
 	int p1ShipsIndex = 0;
 
 	for (int i = 0; i < Player::NUM_SHIPS; ++i) {
-		p1ShipNames->emplace_back(player1->getShip(i).getName());
+		p1ShipNames.emplace_back(player1->getShip(i).getName());
 	}
 	RadioboxOption radiobox_option = RadioboxOption::Simple();
-	radiobox_option.entries		   = p1ShipNames;
+	radiobox_option.entries		   = &p1ShipNames;
 	radiobox_option.on_change	   = [&] { player1->selectShip(p1ShipsIndex); };
 	radiobox_option.selected	   = &p1ShipsIndex;
 
@@ -53,9 +54,10 @@ void Game::MainGameScreen() const {
 	auto	   p1_on_click		 = [&] { player1->placeSelectedShip(selected_y, selected_x); };
 	const auto place_ship_button = Button("Place Ship", p1_on_click);
 
-	auto layout = Container::Horizontal({p1GridRenderer.gridRenderer, p2GridRenderer.gridRenderer,
-										 Container::Vertical({place_ship_button, p1ShipsList})}) |
-				  bgcolor(Color::Blue) | color(Color::DarkBlue);
+	auto layout = Container::Horizontal({//
+										 p1GridRenderer.gridRenderer, p2GridRenderer.gridRenderer,
+										 Container::Vertical({place_ship_button, p1ShipsList})}) //
+				  | bgcolor(Color::Blue) | color(Color::DarkBlue);
 
 	layout |= CatchEvent([&](Event event) {
 		if (event.is_mouse() && event.mouse().button == Mouse::Right && event.mouse().motion == Mouse::Pressed) {

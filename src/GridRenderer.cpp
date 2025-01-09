@@ -31,7 +31,7 @@ GridRenderer::GridRenderer(Player &p, int *og_selected_x, int *og_selected_y, st
 
 				   auto element = text(label);
 
-				   if (is_placing_ships && !ships_hidden) {
+				   if (!ship.isPlaced() && is_placing_ships && !ships_hidden) {
 
 					   //{startRow, endRow, startCol, endCol};
 					   if (const auto extents = ship.getAABBat(*selected_y, *selected_x);
